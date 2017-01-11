@@ -24,7 +24,7 @@ def album():
 
 # Contain - sequencenum, albumid, picid, caption
 def contain():
-	image_names = [ filename for filename in os.listdir('images')]
+	image_names = [ filename for filename in os.listdir('static/images/pa1_images/images')]
 	albumid_lst = [2]*4 + [4]*5 + [1]*8 +[3]*13
 	contain =[];
 	for i,im_name in enumerate(image_names):
@@ -37,7 +37,7 @@ def contain():
 
 # Photo - picid, format, date
 def photo():
-	image_names = [ filename for filename in os.listdir('images')]
+	image_names = [ filename for filename in os.listdir('static/images/pa1_images/images')]
 	albumid_lst = [2]*4 + [4]*5 + [1]*8 +[3]*13
 	photo =[];
 	for i,im_name in enumerate(image_names):
