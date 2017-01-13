@@ -3,6 +3,7 @@ import hashlib
 import os
 import datetime
 import time
+import shutil 
 # User - username, firstname, lastname, password, email
 def user():
 	user = []
@@ -23,21 +24,32 @@ def album():
 	return album
 
 # Contain - sequencenum, albumid, picid, caption
+
 def contain():
-	image_names = [ filename for filename in os.listdir('static/images/pa1_images/images')]
-	albumid_lst = [2]*4 + [4]*5 + [1]*8 +[3]*13
-	contain =[];
-	for i,im_name in enumerate(image_names):
-		albumid = albumid_lst[i]
-		ptype = im_name.split('.')[1]
-		m = hashlib.md5((str(albumid) + im_name).encode('utf-8'))
-		contain.append([i,albumid,m.hexdigest(),''])
-		#print i, albumid, im_name
-	return contain
+    image_names = [ filename for filename in os.listdir('static/images')]
+
+    src = 'images'
+    target = 'image_hash'
+    if not os.path.isdir(target):
+        os.mkdir(target)
+
+    albumid_lst = [2]*4 + [4]*5 + [1]*8 +[3]*13
+    contain =[];
+    for i,im_name in enumerate(image_names):
+        albumid = albumid_lst[i]
+        ptype = im_name.split('.')[1]
+        m = hashlib.md5((str(albumid) + im_name).encode('utf-8'))
+        contain.append([i,albumid,m.hexdigest(),''])
+
+        new_name = (m.hexdigest() + '.' + ptype)
+        shutil.copy(os.path.join(src,im_name),os.path.join(target,new_name))
+        #print i, albumid, im_name
+    return contain
+
 
 # Photo - picid, format, date
 def photo():
-	image_names = [ filename for filename in os.listdir('static/images/pa1_images/images')]
+	image_names = [ filename for filename in os.listdir('static/images')]
 	albumid_lst = [2]*4 + [4]*5 + [1]*8 +[3]*13
 	photo =[];
 	for i,im_name in enumerate(image_names):
