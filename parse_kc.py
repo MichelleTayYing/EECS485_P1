@@ -28,7 +28,7 @@ def album():
 def contain():
     image_names = [ filename for filename in os.listdir('static/images')]
 
-    src = 'images'
+    src = 'static/images'
     target = 'image_hash'
     if not os.path.isdir(target):
         os.mkdir(target)

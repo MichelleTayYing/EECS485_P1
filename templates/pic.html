@@ -14,7 +14,7 @@
         
           
         <img   src={{"../static/image_hash/"~image_list[i]~".jpg"}} style="display:block; margin:auto;" ></img>
-        
+
         {% if  i >0 %}           
             <a style="float:left;" id=pre_id href={{"pic?picid="~image_list[i-1]}} class="btn btn-lg btn-warning" role="button">Previous</a>     
             <!--Route: http://2j0u0dsj:4775/64ogrm6mxzu9805asjor/p1/pic?picid=<picid>-->
@@ -39,7 +39,7 @@
 
 <p>
    
-      <a  href={{"../album?albumid="~total_list[i]['albumid']}} class="btn btn-success btn-lg" role="button">Back to Albums {{total_list[i]['albumid']}}»</a>
+      <a  href={{"../album?albumid="~album_num}} class="btn btn-success btn-lg" role="button">Back to Albums {{album_num}}»</a>
       
 </p>    
 
